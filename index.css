@@ -72,15 +72,17 @@ main {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .container{
+  border: 3px solid #454545;
   display: flex;
-  gap: 10px;
-  padding: 50px 0; 
-  margin: 0 auto;
+  gap: 5px;
+  padding: 5px; 
+  margin: 45px auto;
   width: 70%;
-  max-width: 70rem;
+  max-width: 72rem;
   height: 100%;
 }
 
@@ -95,7 +97,7 @@ main {
 .main, .sidebar {
   flex-direction: column;
   display: flex;
-  gap: 10px;
+  gap: 5px;
 }
 
 
@@ -105,7 +107,7 @@ main {
 
 .block{
   background-color: #0D0D0D;
-  border: 1px solid #454545;
+  border: 2px solid #555;
   width: 100%;
   text-align: justify;
 }
@@ -157,7 +159,7 @@ main {
 }
 
 .project {
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .project p {
@@ -169,10 +171,18 @@ main {
   min-height: 10rem;
   border-top: 2px solid #454545;
   margin-top: auto;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .footer > .wrapper {
-  justify-content: right;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  align-items: end;
+}
+
+.footer div {
+  display: flex;
+  align-items: end;
 }
 
 .posts {
