@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xunterr's blog</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="res/31.gif" type="image/gif">
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="load.js"></script>
+    <div id="header"></div>
+
+    <main>
+      <div class="container">
+        <div class="main">
+          <div class="block">
+            <h1 id="title"></h1>
+            <p id="contents"></p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="footer"></div>
+    
+    <script>
+      async function loadHTML(id, url) {
+        const res = await fetch(url);
+        document.getElementById(id).innerHTML = await res.text();
+      }
+
+      loadHTML('header', 'header.html');
+      loadHTML('footer', 'footer.html');
+
+      const params = new URLSearchParams(window.location.search);
+      postName = params.get("p")
+      let url = `https://api.github.com/repos/xunterr/blog/contents/${postName}`
+
+      fetch(url, {
+        method: "GET",
+        headers: {
+          "Accept": "application/vnd.github+json",
+        },
+      }).then(r => {
+          if (!r.ok) {
+            throw new Error('Network response was not ok');
+          }
+        return r.json()
+      }).then(v => {
+        let name = v.name.slice(0, -3)
+
+        let title = document.getElementById("title")
+        title.textContent = name
+        let contents = document.getElementById("contents")
+        contents.innerHTML = marked.parse(atob(v.content))
+      })
+    </script>
+  </body>
+</html>
+

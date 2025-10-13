@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xunterr's website</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="res/31.gif" type="image/gif">
+  </head>
+  <body>
+    <script src="load.js"></script>
+
+    <div id="header"></div>
+
+    <main>
+      <div class="container">
+        <div class="main">
+          <div id="about" class="block">
+            <h1>about</h1>
+            <div class="text">
+              <p> Hi, I’m xunterr. I develop things for fun.</p>
+              <p> I tinker and explore systems. Complex things always amazed me. And to be part of those, who make them, gives me a lot of joy.</p>
+              <p> I am whatever-engineer. I do whatever I find interesting, and I write about it in my <a href="blog.html">blog</a>.</p>
+              <p> I write in Go and Java. Recently reading a lot of distributed systems papers and writing my own networks.
+              If you want to hire me, you probably want to read my <a href="">CV</a>.</p>
+
+            </div>
+          </div>
+          <div id="projects" class="block">
+            <h1>recent projects</h1>
+            <div class="projects-block">
+              <div class="project">
+                <h2><a href="https://github.com/xunterr/aracno">Aracno</a></h2>
+                <p>“Aracno is a web-scale, distributed, polite web crawler. It utilizes a fully distributed peer-to-peer protocol to scale across  millions of hosts and thousands of operations per second.”</p>
+              </div>
+              <hr/>
+              <div class="project">
+                <h2><a href="https://github.com/xunterr/tinynet">Tinynet</a></h2>
+                <p>“A small framework for designing p2p protocols in Go. Supports multiplexing, custom encoding, user-defined commands and much more”</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class = "sidebar">
+          <div class="block github-bar">
+            <a href="https://github.com/xunterr">
+              <div class="github-badge">
+                  <img src="res/pfp.png"/>
+                  <span>xunterr on github</span>
+              </div>
+            </a>
+          </div>
+          <div class="block">
+            <h2>reach me</h2>
+            <p><span class="secondary-text">Email me:</span> a.xunterr@gmail.com </p>
+            <p><span class="secondary-text">Text me on Libera:</span> xunterr</p>
+            <p><span class="secondary-text">Find me on GitHub:</span> xunterr</p>
+          </div>
+          <div class="block">
+            <h2>recent commits</h2>
+            <div id="commits-container">
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="footer"></div>
+    
+    <script>
+      let today = new Date()
+      let m = today.getMonth()
+      today.setMonth(today.getMonth()-10)
+      if (today.getMonth() == m) d.setDate(0);
+
+      let stringDate = today.toISOString()
+
+      let url = `https://api.github.com/search/commits?q=author:xunterr+is:public+-repo:xunterr/blog+author-date:>${stringDate}+sort:author-date&per_page=5&page=1`
+
+      fetch(url, {
+        method: "GET",
+        headers: {
+          "Accept": "application/vnd.github.cloak-preview+json",
+        },
+      }).then(r => {
+          if (!r.ok) {
+            throw new Error('Network response was not ok');
+          }
+        return r.json()
+      }).then(d => {
+        d.items.forEach(i => {
+          let msg = i.commit.message.slice(0, 25)
+          let hash = i.sha.slice(0,5)
+
+          let parent = document.getElementById("commits-container")
+
+          let newDiv = document.createElement("div")
+          newDiv.textContent = `${hash} - ${msg}...`
+
+          parent.appendChild(newDiv)
+        })
+      })
+    </script>
+  </body>
+</html>
+
