@@ -68,7 +68,7 @@ p {
 
 main {
   flex-grow: 1;
-  background-image: url("res/eye_ascii.png");
+  background-image: url("res/bgr.webp");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
