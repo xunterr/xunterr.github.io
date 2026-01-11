@@ -21,8 +21,8 @@
             <div class="text">
               <p> Hi, I’m xunterr. I develop things for fun.</p>
               <p> I tinker and explore systems. Complex things always amazed me. And to be part of those, who make them, gives me a lot of joy.</p>
-              <p> I am whatever-engineer. I do whatever I find interesting, and I write about it in my <a href="blog.html">blog</a>.</p>
-              <p> I write in Go and Java. Recently reading a lot of distributed systems papers and writing my own networks.
+              <p> I do whatever I find interesting, and I write about it in my <a href="blog.html">blog</a>.</p>
+              <p> I write in Go, study distributed systems, and experiment by building my own.
               If you want to hire me, you probably want to read my <a href="">CV</a>.</p>
 
             </div>
@@ -33,11 +33,11 @@
             <div class="projects-block">
               <div class="project">
                 <h2><a href="https://github.com/xunterr/aracno">Aracno</a></h2>
-                <p>“Aracno is a web-scale, distributed, polite web crawler. It utilizes a fully distributed peer-to-peer protocol to scale across  millions of hosts and thousands of operations per second.”</p>
+                <p>Aracno is a web-scale, distributed, polite web crawler. It utilizes a fully distributed peer-to-peer protocol to scale across millions of hosts and thousands of operations per second.</p>
               </div>
               <div class="project">
                 <h2><a href="https://github.com/xunterr/tinynet">Tinynet</a></h2>
-                <p>“A small framework for designing p2p protocols in Go. Supports multiplexing, custom encoding, user-defined commands and much more”</p>
+                <p>Tinynet provides a common toolset for developing bidirectional network protocols.</p>
               </div>
             </div>
           </div>
@@ -92,13 +92,13 @@
         return r.json()
       }).then(d => {
         d.items.forEach(i => {
-          let msg = i.commit.message.slice(0, 25)
           let hash = i.sha.slice(0,5)
 
           let parent = document.getElementById("commits-container")
 
           let newDiv = document.createElement("div")
-          newDiv.textContent = `${hash} - ${msg}...`
+          newDiv.className="trim"
+          newDiv.textContent = `${hash} - ${i.commit.message}`
 
           parent.appendChild(newDiv)
         })
