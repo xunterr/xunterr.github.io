@@ -37,14 +37,21 @@ p {
   height: 75px;
 }
 
-.header > .wrapper, .navbar > .wrapper, .footer > .wrapper{
+.wrapper {
   display: flex;
-  align-items: center;         /* vertical centering */
-  justify-content: space-between; /* or center, or flex-start — your choice */
+  align-items: center;         
   width: 70%;
   max-width: 70rem;
   margin: 0 auto;
   height: 100%;
+  display: flex;
+}
+
+.sides {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo{
@@ -180,15 +187,24 @@ main {
   border-top: 2px solid #454545;
   margin-top: auto;
   font-family: 'Courier New', Courier, monospace;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display:flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.badges {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .footer > .wrapper {
-  justify-content: space-between;
-  padding-bottom: 20px;
   align-items: end;
 }
 
-.footer div {
+.footer > div {
   display: flex;
   align-items: end;
 }

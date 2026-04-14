@@ -59,11 +59,15 @@ sortedFiles.forEach(({filename, lastModified}, i) => {
   let newDiv = document.createElement("div")
 
   let h2 = document.createElement("h2")
-  h2.textContent = `${i+1} |`
+  let span = document.createElement("span")
+  span.textContent = `${i+1} |`
+  span.className = "secondary-text"
   let a = document.createElement("a")
   a.textContent = `${name}`
   a.href = `post.html?p=${encodeURIComponent(filename)}`
   a.style = "margin-left: 1rem;"
+
+  h2.appendChild(span)
   h2.appendChild(a)
 
   let date = document.createElement("span")
