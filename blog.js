@@ -51,10 +51,11 @@ const sortedFiles = Object.entries(fileTimes)
       }));
 
 
+
+let parent = document.getElementById("posts")
+parent.textContent = ""
 sortedFiles.forEach(({filename, lastModified}, i) => {
   let name = filename.slice(0, -3)
-
-  let parent = document.getElementById("posts")
 
   let newDiv = document.createElement("div")
 

@@ -48,7 +48,6 @@ p {
 }
 
 .sides {
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -194,19 +193,14 @@ main {
   gap: 2rem;
 }
 
+.footer > div {
+  flex: 1;
+}
+
 .badges {
   display: flex;
   align-items: center;
   gap: 1rem;
-}
-
-.footer > .wrapper {
-  align-items: end;
-}
-
-.footer > div {
-  display: flex;
-  align-items: end;
 }
 
 .posts {
@@ -221,6 +215,15 @@ main {
 
 .posts h2 {
   font-size: 16;
+}
+
+.post-contents h1, .post-contents h2 {
+  margin: 2rem 0;
+}
+
+.post-contents pre {
+  padding: 1rem;
+  background-color: #1a1a1a;
 }
 
 @media (max-width: 1300px) {
@@ -241,6 +244,10 @@ main {
     width: 100%;
     border: none;
     padding-left: 0;
+  }
+  
+  img[src="res/peng.gif"]{
+    display: none;
   }
 
   main {
