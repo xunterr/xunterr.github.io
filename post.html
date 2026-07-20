@@ -27,14 +27,6 @@
     <div id="footer"></div>
     
     <script>
-      async function loadHTML(id, url) {
-        const res = await fetch(url);
-        document.getElementById(id).innerHTML = await res.text();
-      }
-
-      loadHTML('header', 'header.html');
-      loadHTML('footer', 'footer.html');
-
       const params = new URLSearchParams(window.location.search);
       postName = params.get("p")
       let url = `https://api.github.com/repos/xunterr/blog/contents/${postName}`

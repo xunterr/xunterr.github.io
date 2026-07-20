@@ -65,7 +65,9 @@ sortedFiles.forEach(({filename, lastModified}, i) => {
   span.className = "secondary-text"
   let a = document.createElement("a")
   a.textContent = `${name}`
-  a.href = `post.html?p=${encodeURIComponent(filename)}`
+  const url = new URL("post.html", location.href);
+  url.searchParams.set("p", filename);
+  a.href = url.toString();
   a.style = "margin-left: 1rem;"
 
   h2.appendChild(span)
